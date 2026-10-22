@@ -227,7 +227,11 @@ html.em-iframe .fonte{margin-top:28px}
   .hist .ano{font-size:17px}
   .hist .pt{margin-left:6px}
 }
-@media (max-width:639px){
+@media (max-width:760px) and (min-width:600px){
+  /* embed de desktop com barra de rolagem (~620 px úteis): abas mais justas para caber numa linha */
+  .abas button{padding-left:8px;padding-right:8px}
+}
+@media (max-width:599px){
   /* abas em grade 2x2: todas visíveis, sem rolagem lateral */
   .nav:after{display:none}
   .abas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;overflow:visible}
