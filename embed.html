@@ -1,0 +1,16 @@
+<!-- Embed da página "MP das Bets" -->
+<!-- Troque o src pelo endereço onde o arquivo mp-bets.html for hospedado -->
+<iframe id="mp-bets" src="https://igorsiqueirahub.github.io/mp-bets/" title="MP das Bets" loading="lazy"
+  style="width:100%;border:0;display:block;min-height:900px" scrolling="no"></iframe>
+<script>
+(function(){
+  var f=document.getElementById('mp-bets');
+  addEventListener('message',function(e){
+    if(e.source!==f.contentWindow||!e.data)return;
+    var d=e.data;
+    if(d.type==='mp-bets:pronto')f.contentWindow.postMessage({type:'mp-bets:pagina',url:location.href},'*');
+    if(d.type==='mp-bets:altura')f.style.height=d.altura+'px';
+    if(d.type==='mp-bets:rolar'){var y=f.getBoundingClientRect().top+scrollY+d.y;if(scrollY>y)scrollTo({top:y,behavior:'smooth'});}
+  });
+})();
+</script>

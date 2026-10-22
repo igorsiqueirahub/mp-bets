@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MP das Bets</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="O que diz a MP 1.394/2026, que proíbe as bets em todo o país, o que já está valendo e como o Brasil chegou até aqui: da Lei 13.756/2018 ao fim das apostas de quota fixa.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet">
+<style>
+/* Mesmo sistema da página da Liga do Futebol do Brasil: vermelho, preto e branco, cantos retos, Figtree */
+:root{--medida:640px;--vermelho:#CB0003;--vermelho-claro:#FF7366;--tinta:#000;--texto:#1A1A1A;--mudo:#4D4D4D;--fraco:#767676;--linha:#E6E6E6;--cinza:#F2F2F2;--trilho:#EDEDED;--escuro:#1A1A1A;--fundo:#fff;--antigo:#A6A6A6;--verde:#1E7A4C;--verde-bg:#DCEFE4;--verm-bg:#F9DEDD;color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--fundo)}
+body{font-family:"Figtree",Arial,Helvetica,sans-serif;color:var(--texto);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.wrap{max-width:1136px;margin:0 auto;padding:32px max(32px,env(safe-area-inset-right,0px)) 40px max(32px,env(safe-area-inset-left,0px))}
+html.em-iframe .wrap{padding:16px 2px}
+html.em-iframe body{border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+h1{font-size:clamp(30px,4.2vw,48px);line-height:1.04;letter-spacing:-.03em;font-weight:800;color:var(--tinta);margin:0;text-wrap:balance}
+h1 span{color:var(--vermelho);display:block}
+.abre{display:flex;flex-direction:column;gap:14px;margin-bottom:24px;max-width:var(--medida)}
+.lede{font-size:20px;line-height:32px;margin:0;max-width:var(--medida)}
+.metas{display:flex;flex-wrap:wrap;gap:8px;border:1px solid var(--linha);border-radius:4px;padding:16px 24px;margin-bottom:16px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--cinza);border-radius:4px;padding:7px 12px;font-size:14px;font-weight:600;color:var(--texto)}
+.chip svg{width:15px;height:15px;color:var(--vermelho);flex:none}
+.chip.voto{background:#fff;border:1px solid var(--vermelho);color:var(--vermelho)}
+.placar{background:var(--escuro);color:#fff;border-radius:4px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.pl{padding:24px 24px 22px;position:relative;display:flex;flex-direction:column;gap:8px}
+.pl+.pl:before{content:"";position:absolute;left:0;top:28px;bottom:28px;width:1px;background:#3A3A3A}
+.pl .n{font-size:clamp(28px,3.2vw,36px);font-weight:800;letter-spacing:-.03em;line-height:1}
+.pl .t{font-size:14px;line-height:1.45;color:#D6D6D6;flex:1}
+.pl a{color:var(--vermelho-claro);font-size:14px;font-weight:600;text-decoration:none}
+.pl a:hover{text-decoration:underline}
+.nav{margin-top:36px;border-top:2px solid var(--tinta);border-bottom:1px solid var(--linha);position:relative}
+.nav:after{content:"";position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(90deg,rgba(255,255,255,0),#fff);pointer-events:none;opacity:0;transition:opacity .15s}
+.nav.mais:after{opacity:1}
+.abas{display:flex;overflow-x:auto;scrollbar-width:none;gap:4px;min-width:0}
+.abas::-webkit-scrollbar{display:none}
+.abas button{all:unset;cursor:pointer;white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--mudo);padding:16px 11px 14px;border-bottom:3px solid transparent;display:inline-flex;align-items:center;gap:6px}
+.abas button[aria-selected=true]{color:var(--tinta);border-bottom-color:var(--vermelho)}
+.abas button:focus-visible,.btn-link:focus-visible,.pl a:focus-visible,.prox a:focus-visible{outline:2px solid var(--vermelho);outline-offset:2px}
+.abas .tag{font-size:10px;letter-spacing:.4px;background:var(--vermelho);color:#fff;border-radius:3px;padding:2px 5px}
+.btn-link{all:unset;cursor:pointer;margin-left:auto;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--linha);border-radius:4px;padding:7px 12px;font-size:14px;font-weight:500;white-space:nowrap;flex:none}
+.btn-link svg{width:15px;height:15px}
+.painel{padding-top:32px}
+.frase{font-size:clamp(22px,2.8vw,32px);line-height:1.25;letter-spacing:-.02em;font-weight:500;color:var(--tinta);margin:0 0 12px;max-width:var(--medida);text-wrap:balance}
+.frase b{color:var(--vermelho);font-weight:800}
+.data{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--linha);border-radius:4px;padding:6px 12px;font-size:14px;font-weight:600}
+.data-linha{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:14px;color:var(--mudo)}
+.secao{margin-top:44px}
+.secao h2{font-size:clamp(22px,2.6vw,28px);letter-spacing:-.02em;line-height:1.15;margin:0 0 6px;color:var(--tinta);text-wrap:balance}
+.secao .sub{font-size:15px;line-height:1.5;color:var(--mudo);margin:0 0 16px;max-width:var(--medida)}
+.etq{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--vermelho);display:flex;align-items:center;gap:8px;margin:0 0 8px}
+.etq:before{content:"";width:8px;height:8px;background:var(--vermelho)}
+.nota{font-size:14px;line-height:1.6;color:var(--mudo);margin:12px 0 0;max-width:var(--medida)}
+.nota b{color:var(--texto)}
+.duas{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.tiles.c3,.cards.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.tile{border:1px solid var(--linha);border-radius:4px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:6px}
+.tile .n{font-size:32px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--tinta)}
+.tile .n.red{color:var(--vermelho)}
+.tile .t{font-size:14px;line-height:1.45;color:var(--texto);font-weight:600}
+.tile .d{font-size:13px;line-height:1.45;color:var(--mudo)}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.card{border:1px solid var(--linha);border-radius:4px;padding:16px;font-size:14px;line-height:1.5;color:var(--mudo)}
+.card h3{font-size:16px;margin:0 0 6px;color:var(--tinta)}
+.card.dest{border-color:var(--tinta);border-width:2px}
+.card .pena{display:inline-block;margin-top:10px;font-size:13px;font-weight:700;color:#fff;background:var(--vermelho);border-radius:3px;padding:3px 8px}
+.card .pena.esc{background:var(--escuro)}
+.card .big{font-size:26px;font-weight:800;color:var(--tinta);letter-spacing:-.02em;display:block;margin:4px 0}
+.tw{overflow-x:auto;border:1px solid var(--linha);border-radius:4px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:10px 12px;text-align:left;border-top:1px solid var(--linha);vertical-align:top;line-height:1.5}
+thead th{border-top:0;background:var(--cinza);font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--mudo)}
+tbody th{font-weight:700;color:var(--tinta);width:32%}
+td.num,th.num{text-align:right}
+.st{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;white-space:nowrap}
+.st i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.st.ok i{background:var(--verde)}.st.ok{color:var(--verde)}
+.st.vem i{background:#E0A100}.st.vem{color:#8A6300}
+.st.crit i{background:var(--vermelho)}.st.crit{color:var(--vermelho)}
+.mute{color:var(--fraco)}
+.citacao{background:var(--escuro);color:#fff;border-radius:4px;padding:22px 24px;font-size:18px;line-height:1.45;font-weight:600;letter-spacing:-.01em;margin:0;max-width:var(--medida)}
+.citacao cite{display:block;margin-top:10px;font-style:normal;font-size:13px;font-weight:500;color:#BDBDBD;letter-spacing:0}
+/* cronograma horizontal */
+.crono{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.passo{border-top:4px solid var(--tinta);padding-top:10px;font-size:14px;line-height:1.45;color:var(--mudo);position:relative}
+.passo b{display:block;font-size:13px;letter-spacing:.4px;text-transform:uppercase;color:var(--vermelho);margin-bottom:4px}
+.passo strong{display:block;color:var(--tinta);font-size:16px;line-height:1.25;margin-bottom:4px}
+.passo.feito{border-top-color:var(--antigo)}
+.passo.feito b{color:var(--fraco)}
+.passo.feito:after{content:"Concluído";position:absolute;top:-26px;right:0;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--verde)}
+.passo.agora{border-top-color:var(--vermelho)}
+.passo.agora:after{content:"Próximo";position:absolute;top:-26px;right:0;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--vermelho)}
+/* barra de devolução */
+.barra{display:flex;height:28px;border-radius:4px;overflow:hidden;margin:6px 0 8px}
+.barra i{display:flex;align-items:center;padding:0 10px;font-style:normal;font-size:13px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden}
+.barra .a{background:var(--vermelho)}.barra .b{background:var(--antigo)}
+.leg{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--mudo);margin:0}
+.leg i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.caixa{border:1px solid var(--linha);border-radius:4px;padding:20px}
+/* tramitação */
+.tram{list-style:none;margin:0;padding:0;border:1px solid var(--linha);border-radius:4px}
+.tram li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:14px;padding:14px 16px;border-top:1px solid var(--linha);font-size:14px;line-height:1.5;color:var(--mudo)}
+.tram li:first-child{border-top:0}
+.tram li>span{font-weight:800;color:var(--tinta);font-size:15px}
+.tram li b{display:block;color:var(--tinta);font-size:15px}
+.tram li.fut>span{color:var(--fraco)}
+/* linha do tempo vertical */
+.hist{list-style:none;margin:0;padding:0;position:relative}
+.hist:before{content:"";position:absolute;left:111px;top:6px;bottom:6px;width:2px;background:var(--linha)}
+.hist li{display:grid;grid-template-columns:96px 32px minmax(0,1fr);align-items:start;padding:0 0 26px}
+.hist .ano{font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--tinta);line-height:1;text-align:right;padding-top:1px}
+.hist .ano small{display:block;font-size:12px;font-weight:600;letter-spacing:0;color:var(--mudo);margin-top:4px}
+.hist .pt{width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--tinta);margin:4px 0 0 10px;position:relative;z-index:1}
+.hist li.marco .pt{background:var(--vermelho);border-color:var(--vermelho)}
+.hist li.marco .ano{color:var(--vermelho)}
+.hist .tx{font-size:15px;line-height:1.55;color:var(--mudo);max-width:var(--medida)}
+.hist .tx b{display:block;color:var(--tinta);font-size:17px;line-height:1.3;margin-bottom:3px}
+.hist .tx .lei{display:inline-block;margin-top:6px;font-size:12px;font-weight:700;letter-spacing:.3px;background:var(--cinza);color:var(--texto);border-radius:3px;padding:2px 7px}
+.hist .era{display:block;grid-column:1/-1;margin:4px 0 18px 0;padding:6px 0 6px 0;font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--vermelho)}
+.prox{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.prox a{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--tinta);border-radius:4px;padding:8px 14px;font-size:14px;font-weight:700;color:var(--tinta);text-decoration:none}
+.prox a:hover{background:var(--tinta);color:#fff}
+/* argumentos do setor */
+.aviso{display:flex;gap:12px;align-items:flex-start;background:var(--cinza);border-left:4px solid var(--tinta);border-radius:0 4px 4px 0;padding:14px 18px;font-size:14px;line-height:1.55;color:var(--texto);max-width:var(--medida);margin-top:16px}
+.args{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.args li{border:1px solid var(--linha);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.args .num{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--vermelho)}
+.args h3{margin:0;font-size:18px;line-height:1.25;letter-spacing:-.01em;color:var(--tinta)}
+.args p{margin:0;font-size:14px;line-height:1.55;color:var(--mudo)}
+.args .dado{display:flex;align-items:baseline;gap:10px;border-top:1px solid var(--linha);padding-top:10px;margin-top:auto}
+.args .dado b{font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--tinta);white-space:nowrap}
+.args .dado span{font-size:13px;line-height:1.4;color:var(--mudo)}
+.args .dado small{display:block;color:var(--fraco);font-size:12px;margin-top:2px}
+/* blocos recolhíveis: abertos no desktop, fechados no celular */
+.dobra>summary{list-style:none;cursor:default}
+.dobra>summary::-webkit-details-marker{display:none}
+.dobra>summary .seta{display:none}
+.mais-itens{all:unset;display:none;cursor:pointer;margin-top:10px;font-size:14px;font-weight:700;color:var(--vermelho)}
+.seguinte{margin-top:36px;border-top:2px solid var(--tinta);padding-top:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.seguinte span{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--mudo)}
+.seguinte a{font-size:17px;font-weight:800;color:var(--vermelho);text-decoration:none}
+.fonte{font-size:13px;line-height:1.5;color:var(--mudo);margin:40px 0 0;padding-top:12px;border-top:1px solid var(--linha)}
+.fonte span{display:block;max-width:var(--medida)}
+.fonte a{color:var(--mudo)}
+html.em-iframe .fonte{margin-top:28px}
+@media (max-width:900px){
+  .placar{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pl:nth-child(3):before{display:none}
+  .tiles,.cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .crono{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:40px}
+}
+@media (max-width:760px){
+  .wrap{padding:20px max(16px,env(safe-area-inset-right,0px)) 28px max(16px,env(safe-area-inset-left,0px))}
+  .abre,.duas{grid-template-columns:1fr}
+  .metas{padding:12px}
+  .metas .btn-link{margin-left:0}
+  .placar{grid-template-columns:1fr}
+  .pl{padding:18px 20px}
+  .pl+.pl:before{display:block!important;left:20px;right:20px;top:0;bottom:auto;width:auto;height:1px}
+  .tiles,.tiles.c3{grid-template-columns:1fr}
+  /* cabeçalho enxuto: abas mais perto do topo */
+  .lede{font-size:18px;line-height:28px}
+  .metas{border:0;padding:0;margin-bottom:12px}
+  .metas .chip{display:none}
+  .placar{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .pl{padding:14px 14px 12px;gap:6px}
+  .pl .n{font-size:24px}
+  .pl .t{font-size:12.5px;line-height:1.4}
+  .pl a{display:none}
+  .pl+.pl:before{display:none!important}
+  .pl:nth-child(n+3){border-top:1px solid #3A3A3A}
+  .pl:nth-child(even){border-left:1px solid #3A3A3A}
+  .nav{margin-top:20px}
+  .painel{padding-top:22px}
+  .secao{margin-top:32px}
+  /* cards viram lista */
+  .cards,.cards.c3{grid-template-columns:1fr;gap:0;border-top:1px solid var(--linha)}
+  .card{border:0;border-bottom:1px solid var(--linha);border-radius:0;padding:12px 0}
+  .card.dest{border-width:0 0 1px;border-color:var(--linha)}
+  .card h3{font-size:15px;margin-bottom:2px}
+  .card .pena{margin-top:6px}
+  .args{gap:0;border-top:1px solid var(--linha)}
+  .args li{border:0;border-bottom:1px solid var(--linha);border-radius:0;padding:14px 0}
+  .args h3{font-size:16px}
+  .args .dado b{font-size:22px}
+  .tile{padding:12px 14px}
+  .tile .n{font-size:24px}
+  .tiles[style*="repeat(2"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .tiles[style*="repeat(2"] .d{display:none}
+  .crono{row-gap:0;border-left:3px solid var(--linha);margin:16px 0 0 6px!important}
+  .passo{border-top:0;padding:0 0 14px 16px;position:relative}
+  .passo:before{content:"";position:absolute;left:-8px;top:2px;width:13px;height:13px;border-radius:50%;background:var(--antigo)}
+  .passo.agora:before{background:var(--vermelho)}
+  .passo:after{position:static!important;display:inline-block;margin-left:6px}
+  .passo b{display:inline}
+  .passo strong{margin-top:2px}
+  .dobra>summary{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+  .dobra>summary h2{font-size:19px!important;margin:0!important}
+  .dobra>summary .seta{display:inline-flex;flex:none;width:28px;height:28px;border:1px solid var(--linha);border-radius:4px;align-items:center;justify-content:center;font-size:14px;transition:transform .15s}
+  .dobra[open]>summary .seta{transform:rotate(180deg)}
+  .dobra[open]>summary{border-bottom:0}
+  /* tabela "o que vale hoje" vira lista empilhada */
+  .vale thead{display:none}
+  .vale,.vale tbody,.vale tr,.vale th,.vale td{display:block;width:auto}
+  .vale tr{padding:12px 14px;border-top:1px solid var(--linha)}
+  .vale tr:first-child{border-top:0}
+  .vale th,.vale td{border:0;padding:0}
+  .vale th{display:inline;font-size:15px;margin-right:8px}
+  .vale td:nth-of-type(1){display:inline}
+  .vale td:nth-of-type(2){margin-top:4px;color:var(--mudo)}
+  /* lista longa: mostra 4 itens e o resto sob demanda */
+  .cards.corta:not(.aberta) .card:nth-child(n+5){display:none}
+  .mais-itens{display:block!important}
+  .crono{grid-template-columns:1fr;row-gap:36px}
+  .args{grid-template-columns:1fr}
+  tbody th{width:auto}
+  .tram li{grid-template-columns:1fr;gap:2px}
+  .hist:before{left:63px}
+  .hist li{grid-template-columns:52px 24px minmax(0,1fr)}
+  .hist .ano{font-size:17px}
+  .hist .pt{margin-left:6px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<script>if(window.parent!==window)document.documentElement.classList.add('em-iframe');</script>
+</head>
+<body>
+<div class="wrap" id="topo">
+  <div class="abre">
+    <h1><span>MP das Bets:</span> o fim das apostas on-line no Brasil</h1>
+    <p class="lede">A Medida Provisória 1.394, assinada em 25 de setembro de 2026, proíbe a exploração, a oferta, a intermediação e a publicidade de apostas de quota fixa em todo o país. Os sites saíram do ar, os saldos foram devolvidos e as autorizações acabam em 25 de outubro. Agora, o Congresso tem até 120 dias para decidir se a proibição vira lei.</p>
+  </div>
+  <div class="metas">
+    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>MP 1.394/2026 · 25 de setembro de 2026</span>
+    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21h16M6 21V10M10 21V10M14 21V10M18 21V10M3 10l9-6 9 6"/></svg>Em análise no Congresso</span>
+    <span class="chip voto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/></svg>Em vigor desde a publicação</span>
+    <button type="button" class="btn-link" id="copiar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4L11.8 5.8"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.4-1.4"/></svg><span>Copiar link</span></button>
+  </div>
+  <div class="placar" role="group" aria-label="Números-chave">
+    <div class="pl"><div class="n">6/out</div><div class="t">sites e aplicativos de apostas saíram do ar em todo o país, com apoio da Anatel, do CGI.br e das lojas de aplicativos</div><a href="#resumo" data-ir="resumo">Ver o que diz a MP →</a></div>
+    <div class="pl"><div class="n">R$ 1,3 bi</div><div class="t">em saldos a devolver a cerca de 26,5 milhões de apostadores, pelos bancos, até 14 de outubro</div><a href="#cenario" data-ir="cenario">Ver o cenário atual →</a></div>
+    <div class="pl"><div class="n">2 a 6 anos</div><div class="t">de reclusão para quem explorar, divulgar ou facilitar apostas, segundo o projeto de lei enviado junto com a MP</div><a href="#resumo" data-ir="resumo">Ver os novos crimes →</a></div>
+    <div class="pl"><div class="n">2018</div><div class="t">foi o ano em que a lei criou as apostas de quota fixa. O mercado só foi regulado em 2025</div><a href="#historico" data-ir="historico">Ver o histórico →</a></div>
+  </div>
+
+  <nav class="nav" aria-label="Seções">
+    <div class="abas" role="tablist" id="abas">
+      <button type="button" role="tab" data-aba="resumo" aria-selected="true">Resumo da MP</button>
+      <button type="button" role="tab" data-aba="cenario" aria-selected="false">Cenário atual <span class="tag">em vigor</span></button>
+      <button type="button" role="tab" data-aba="setor" aria-selected="false">O que diz o setor</button>
+      <button type="button" role="tab" data-aba="historico" aria-selected="false">Histórico da regulamentação</button>
+    </div>
+  </nav>
+
+  <!-- ===================== RESUMO DA MP ===================== -->
+  <section class="painel" id="p-resumo" role="tabpanel">
+    <p class="frase">O governo assinou <b>três atos</b>: a MP que proíbe as bets, um projeto de lei que cria <b>cinco novos crimes</b> e a MP do Desenrola Brasil 3.0, para renegociar dívidas de famílias, inclusive as ligadas a apostas.</p>
+    <div class="data-linha"><span class="data">Assinados em 25 de setembro de 2026, em São Paulo</span><span>Fonte: Ministério da Justiça e Segurança Pública</span></div>
+
+    <div class="secao">
+      <h2>O que a MP proíbe</h2>
+      <p class="sub">A medida altera a Lei 14.790/2023 e encerra o mercado de apostas de quota fixa, que estava regulado desde janeiro de 2025.</p>
+      <div class="cards corta" id="proibe">
+        <div class="card dest"><h3>Toda aposta de quota fixa</h3>Apostas em eventos esportivos reais e jogos on-line, em meio físico ou virtual.</div>
+        <div class="card"><h3>Empresas no exterior</h3>A proibição vale também para operadores sediados fora do país que atendam pessoas no Brasil.</div>
+        <div class="card"><h3>Loterias estaduais</h3>As apostas de quota fixa autorizadas por estados e pelo Distrito Federal também são encerradas.</div>
+        <div class="card"><h3>Publicidade</h3>Nova publicidade, patrocínio ou promoção comercial do setor fica proibida de imediato. Peças já contratadas puderam rodar até 5 de outubro.</div>
+        <div class="card"><h3>Novas autorizações</h3>Ficam proibidas novas concessões, permissões e autorizações. Pedidos em análise ficam prejudicados.</div>
+        <div class="card"><h3>Sem indenização</h3>As empresas não recebem de volta o valor das outorgas nem indenização por lucros cessantes ou investimentos feitos.</div>
+        <div class="card"><h3>Pagamentos</h3>Bancos e instituições de pagamento não podem processar transações de apostas, inclusive via Pix, exceto as de encerramento e devolução.</div>
+        <div class="card"><h3>O que fica de fora</h3>As outras modalidades lotéricas previstas em lei, como as loterias da Caixa, não são atingidas.</div>
+      </div>
+      <button type="button" class="mais-itens" id="maisProibe" aria-controls="proibe" aria-expanded="false">Ver mais 4 pontos ▾</button>
+    </div>
+
+    <div class="secao">
+      <h2>O cronograma do fim das bets</h2>
+      <p class="sub">Como foi o encerramento das operações e a devolução do dinheiro dos apostadores.</p>
+      <div class="crono" style="margin-top:34px">
+        <div class="passo feito"><b>25 de setembro</b><strong>Depósitos vedados</strong>Desde a publicação da MP, nenhum novo depósito em contas de apostas.</div>
+        <div class="passo feito"><b>Até 5 de outubro</b><strong>Saque voluntário</strong>Apostadores podiam acessar sites e apps para sacar o saldo até 23h59.</div>
+        <div class="passo feito"><b>6 de outubro</b><strong>Bloqueio</strong>Sites e aplicativos saíram do ar no país, inclusive nas lojas de apps.</div>
+        <div class="passo feito"><b>6 e 7 de outubro</b><strong>Dados aos bancos</strong>Empresas informam o saldo de cada apostador, por CPF, e a conta de origem.</div>
+        <div class="passo feito"><b>9 a 14 de outubro</b><strong>Devolução</strong>Bancos devolvem os valores, de preferência na conta de origem. O que sobrar vai para a Caixa.</div>
+        <div class="passo agora"><b>25 de outubro</b><strong>Fim das autorizações</strong>As licenças em vigor são extintas, 30 dias após a publicação da MP.</div>
+      </div>
+      <p class="nota">Apostas abertas sem resultado até o décimo dia após a publicação foram anuladas, com devolução integral do valor. Cauções e garantias das empresas podem cobrir devoluções e multas.</p>
+    </div>
+
+    <div class="secao">
+      <div class="etq">Projeto de lei · em análise</div>
+      <h2>Cinco novos crimes</h2>
+      <p class="sub">O PL altera a Lei 13.756/2018 e leva para o Código Penal condutas ligadas às apostas. Até ser aprovado pelo Congresso, as penas não valem.</p>
+      <div class="cards c3">
+        <div class="card dest"><h3>Explorar apostas</h3>Vale mesmo com autorização de autoridade estrangeira.<br><span class="pena">4 a 6 anos + multa</span></div>
+        <div class="card"><h3>Divulgar apostas</h3>Pena sobe pela metade se houver pagamento por cadastro de novos apostadores. Jornalismo, conteúdo educativo, acadêmico ou crítico fica resguardado.<br><span class="pena esc">2 a 4 anos + multa</span></div>
+        <div class="card"><h3>Usar dados pessoais para captar apostadores</h3>Aumento de metade se os dados revelarem histórico de apostas ou transtorno de jogo, ou envolverem crianças e adolescentes.<br><span class="pena esc">2 a 4 anos + multa</span></div>
+        <div class="card"><h3>Facilitação financeira</h3>Processar, liquidar ou intermediar pagamentos e prêmios, inclusive com criptoativos. Pena maior se houver ocultação da origem do dinheiro.<br><span class="pena esc">2 a 4 anos + multa</span></div>
+        <div class="card"><h3>Disponibilizar plataforma</h3>Hospedar, distribuir ou manter sites e apps de apostas. Pena maior se burlar verificação de idade ou localização, ou mirar crianças.<br><span class="pena esc">2 a 4 anos + multa</span></div>
+        <div class="card"><h3>Punições administrativas da MP</h3>Já em vigor: multa diária de R$ 200 mil a quem não devolver saldos e multa de até 10% do faturamento no Brasil para plataformas digitais.</div>
+      </div>
+    </div>
+
+    <details class="secao dobra" open><summary><h2>Por que o governo proibiu e o Desenrola 3.0</h2><span class="seta" aria-hidden="true">▼</span></summary>
+    <div class="duas" style="margin-top:16px">
+      <div>
+        <h3 style="font-size:20px;margin:0 0 6px;letter-spacing:-.01em;color:var(--tinta)">Por que o governo diz que proibiu</h3>
+        <p class="sub">Os números de saúde pública apresentados no anúncio.</p>
+        <div class="tiles" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+          <div class="tile"><div class="n red">R$ 38,8 bi</div><div class="t">custo social estimado por ano</div><div class="d">Estimativa das apostas eletrônicas apresentada pelo governo.</div></div>
+          <div class="tile"><div class="n">1,3 mi</div><div class="t">pedidos de autoexclusão</div><div class="d">Quase um terço deles durante a Copa do Mundo.</div></div>
+          <div class="tile"><div class="n">51%</div><div class="t">dos autoexcluídos</div><div class="d">citaram relação direta com problemas de saúde.</div></div>
+          <div class="tile"><div class="n red">15×</div><div class="t">risco de suicídio</div><div class="d">Pode ser até 15 vezes maior com transtorno do jogo, segundo a OMS.</div></div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:20px;margin:0 0 6px;letter-spacing:-.01em;color:var(--tinta)">Desenrola Brasil 3.0</h3>
+        <p class="sub">A outra MP do pacote, para famílias endividadas.</p>
+        <div class="tw"><table><tbody>
+          <tr><th>O que é</th><td>O governo compra carteiras de dívidas atrasadas de pessoas físicas</td></tr>
+          <tr><th>Desconto</th><td>Ao menos 90%, repassado integralmente às famílias</td></tr>
+          <tr><th>Meta</th><td>Até R$ 150 bilhões, de R$ 300 bilhões em dívidas com 2 a 4,5 anos de atraso</td></tr>
+          <tr><th>Leilão</th><td>Previsto para novembro, pelo Tesouro, Banco do Brasil ou Caixa</td></tr>
+          <tr><th>Foco</th><td>Atenção especial a dívidas ligadas a apostas</td></tr>
+        </tbody></table></div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px">
+      <blockquote class="citacao">“Esta decisão não teria a efetividade necessária se não tivéssemos mecanismos de fiscalização eficientes.”<cite>Wellington César Lima e Silva, ministro da Justiça e Segurança Pública</cite></blockquote>
+    </div>
+    </details>
+    <div class="seguinte"><span>Próxima aba</span><a href="#cenario" data-ir="cenario">Cenário atual →</a></div>
+  </section>
+
+  <!-- ===================== CENÁRIO ATUAL ===================== -->
+  <section class="painel" id="p-cenario" role="tabpanel" hidden>
+    <p class="frase">Desde 6 de outubro, <b>nenhuma bet pode operar</b> no Brasil. A MP já tem força de lei, mas só se torna definitiva se o Congresso aprová-la até <b>23 de novembro</b>, prazo que pode ser prorrogado por mais 60 dias.</p>
+    <div class="data-linha"><span class="data">Situação em 22 de outubro de 2026</span><span>Fontes: MJSP, Ministério da Fazenda, Agência Senado e Congresso Nacional</span></div>
+
+    <div class="secao">
+      <h2>O que vale hoje</h2>
+      <div class="tw"><table class="vale">
+        <thead><tr><th>Tema</th><th>Situação</th><th>O que acontece</th></tr></thead>
+        <tbody>
+          <tr><th>Apostar em bets</th><td><span class="st crit"><i></i>Proibido</span></td><td>Sites e apps estão bloqueados. Novos depósitos estão vedados desde 25 de setembro.</td></tr>
+          <tr><th>Publicidade e patrocínio</th><td><span class="st crit"><i></i>Proibido</span></td><td>Fim das peças já contratadas em 5 de outubro. Anúncio irregular é publicidade abusiva pelo Código de Defesa do Consumidor.</td></tr>
+          <tr><th>Pix e TED para bets</th><td><span class="st crit"><i></i>Bloqueado</span></td><td>Regra no arranjo de pagamentos impede transferências para CNPJs de apostas on-line, sem precisar de investigação prévia.</td></tr>
+          <tr><th>Devolução de saldos</th><td><span class="st ok"><i></i>Encerrada nos bancos</span></td><td>Prazo dos bancos acabou em 14 de outubro. Valores não devolvidos ficam em conta específica na Caixa, sob supervisão da Fazenda.</td></tr>
+          <tr><th>Licenças das empresas</th><td><span class="st vem"><i></i>Extintas em 25/out</span></td><td>As autorizações caem 30 dias após a publicação da MP, sem devolução das outorgas.</td></tr>
+          <tr><th>Novos crimes</th><td><span class="st vem"><i></i>Dependem do Congresso</span></td><td>As penas de prisão estão no projeto de lei, que ainda precisa ser votado.</td></tr>
+          <tr><th>Loterias da Caixa</th><td><span class="st ok"><i></i>Continuam</span></td><td>Outras modalidades lotéricas previstas em lei não foram atingidas.</td></tr>
+        </tbody></table></div>
+    </div>
+
+    <div class="secao duas">
+      <div>
+        <h2>A devolução do dinheiro</h2>
+        <p class="sub">Boletins do governo federal com dados enviados pelas empresas. Em 6 de outubro, R$ 1,325 bilhão aguardava devolução; em 10 de outubro, faltavam R$ 159 milhões.</p>
+        <div class="caixa">
+          <div class="barra" role="img" aria-label="De R$ 1,325 bilhão a devolver em 6 de outubro, R$ 159 milhões seguiam pendentes em 10 de outubro"><i class="a" style="width:88%">Mais de R$ 1 bi devolvido</i><i class="b" style="width:12%"></i></div>
+          <div class="leg"><span><i style="background:var(--vermelho)"></i>Devolvido até 10/out</span><span><i style="background:var(--antigo)"></i>Pendente em 10/out: R$ 159 milhões</span></div>
+        </div>
+        <div class="tiles c3" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-top:12px">
+          <div class="tile"><div class="n">26,5 mi</div><div class="t">apostadores com saldo a receber</div><div class="d">Saldo total de R$ 1,325 bilhão, segundo boletim da SPA/Fazenda de 6 de outubro.</div></div>
+          <div class="tile"><div class="n red">90%</div><div class="t">das contas tinham menos de R$ 1</div><div class="d">E 97% tinham menos de R$ 10. Um apostador pode ter contas em várias empresas.</div></div>
+        </div>
+        <p class="nota"><b>48 contas</b> com saldo acima de R$ 500 mil serão analisadas individualmente por suspeita de lavagem de dinheiro (balanço de 2 de outubro). A AGU acionou a Justiça contra <b>oito empresas</b> que não enviaram aos bancos os dados para a devolução.</p>
+      </div>
+      <div>
+        <h2>Fiscalização</h2>
+        <p class="sub">A ofensiva contra sites e perfis que seguem oferecendo apostas.</p>
+        <div class="tiles" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+          <div class="tile"><div class="n">16.627</div><div class="t">sites enviados para bloqueio</div><div class="d">Encaminhados pelo Ciberlab/Senasp e pela SPA entre 25 de setembro e 9 de outubro.</div></div>
+          <div class="tile"><div class="n">3.691</div><div class="t">pedidos de remoção</div><div class="d">De páginas, perfis, canais e grupos em redes sociais.</div></div>
+          <div class="tile"><div class="n">1.367</div><div class="t">sites e perfis derrubados</div><div class="d">Em ação conjunta na véspera do anúncio da MP.</div></div>
+          <div class="tile"><div class="n">188</div><div class="t">sites autorizados até 5 de outubro</div><div class="d">No dia 6, só um ainda estava no ar, e o bloqueio dele foi pedido.</div></div>
+        </div>
+        <p class="nota">O laboratório de inteligência artificial da Fazenda monitora sites irregulares e aciona Anatel, BC, PF e Receita. Um <b>Comitê Interinstitucional</b> reúne PF, Banco Central, Fazenda, AGU, Receita Federal, Casa Civil e Anatel. Denúncias podem ser feitas pelo <b>Fala.BR</b>.</p>
+      </div>
+    </div>
+
+    <div class="secao">
+      <h2>A MP no Congresso</h2>
+      <p class="sub">Uma medida provisória vale por 60 dias, prorrogáveis por mais 60. Se não for votada nesse prazo, perde a validade.</p>
+      <ol class="tram">
+        <li><span>25/set</span><div><b>Publicação e vigência imediata</b>A MP 1.394/2026 é publicada no Diário Oficial e passa a valer.</div></li>
+                <li><span>13/out</span><div><b>99 emendas</b>Fim do prazo para emendas de deputados e senadores. Cinco foram retiradas pelos autores. Em 22 de outubro, a comissão mista seguia aguardando instalação, sem relator definido.</div></li>
+        <li class="fut"><span>9/nov</span><div><b>Regime de urgência</b>A MP passa a trancar a pauta da Casa onde estiver.</div></li>
+        <li class="fut"><span>23/nov</span><div><b>Fim do prazo inicial</b>Pode ser prorrogado por mais 60 dias. Sem votação, a MP caduca.</div></li>
+      </ol>
+      <p class="nota">Pela estimativa do governo, a proibição reduz a arrecadação de tributos em R$ 1,5 bilhão em 2026, R$ 5,2 bilhões em 2027 e R$ 5,3 bilhões em 2028. As 85 outorgas já pagas somaram R$ 2,55 bilhões e não serão devolvidas.</p>
+    </div>
+    <div class="seguinte"><span>Próxima aba</span><a href="#setor" data-ir="setor">O que diz o setor →</a></div>
+  </section>
+
+  <!-- ===================== O QUE DIZ O SETOR ===================== -->
+  <section class="painel" id="p-setor" role="tabpanel" hidden>
+    <p class="frase">Para o <b>IBJR</b>, entidade que representa empresas de apostas, a proibição não acaba com as bets: <b>empurra os apostadores para sites ilegais</b>, sem identificação, sem proteção e sem impostos.</p>
+    <div class="data-linha"><span class="data">Posição do setor de apostas</span><span>Fonte: campanha “Aposto que você não sabia”, do IBJR</span></div>
+    <div class="aviso"><span>Os argumentos e números abaixo são do <b>Instituto Brasileiro de Jogo Responsável (IBJR)</b>, que reúne operadoras de apostas e mantém o site <a href="https://www.apostoquevocenaosabia.com/" target="_blank" rel="noopener" style="color:inherit">apostoquevocenaosabia.com</a> em defesa do mercado regulado. Os dados foram atribuídos pela entidade a fontes como a Secretaria de Prêmios e Apostas (SPA) do Ministério da Fazenda e a pesquisas encomendadas pelo próprio IBJR.</span></div>
+
+    <div class="secao">
+      <h2>Os seis argumentos do setor a favor do mercado regulado</h2>
+      <p class="sub">Um resumo dos principais pontos que o IBJR usa para defender a regulação no lugar da proibição.</p>
+      <ol class="args">
+        <li><span class="num">1 · Identificação</span><h3>Apostador regulado tem nome e CPF</h3><p>Segundo o IBJR, no mercado autorizado todo apostador é identificado e passa por reconhecimento facial, o que permite bloquear menores e beneficiários de programas sociais. No site ilegal, não há esse controle.</p><div class="dado"><b>25,2 mi</b><span>apostadores identificados por CPF em bets autorizadas em 2025<small>Dado atribuído à SPA/MF</small></span></div></li>
+        <li><span class="num">2 · Programas sociais</span><h3>Bolsa Família e BPC já estavam bloqueados</h3><p>A entidade afirma que a regulação já impedia beneficiários de programas sociais de apostar nas plataformas autorizadas.</p><div class="dado"><b>+3 mi</b><span>beneficiários de Bolsa Família ou BPC bloqueados nas bets autorizadas<small>Dado atribuído à Portaria SPA/MF 2.217/2025</small></span></div></li>
+        <li><span class="num">3 · Arrecadação</span><h3>Impostos que financiam esporte e áreas sociais</h3><p>Para o IBJR, a proibição corta uma fonte de arrecadação e os repasses previstos em lei para esporte, segurança, saúde e entidades como Apaes e Pestalozzis.</p><div class="dado"><b>R$ 9,9 bi</b><span>recolhidos à Receita Federal em 2025, além de R$ 4,53 bi repassados a áreas definidas em lei<small>Dados atribuídos à SPA/MF</small></span></div></li>
+        <li><span class="num">4 · Mercado ilegal</span><h3>A proibição favorece os sites clandestinos</h3><p>O setor argumenta que boa parte dos apostadores já usava sites irregulares mesmo com a regulação, e que o ilegal não oferece nenhuma proteção ao jogador.</p><div class="dado"><b>53%</b><span>dos apostadores disseram ter apostado, em três meses, em site sem reconhecimento facial<small>Pesquisa Locomotiva encomendada pelo IBJR (2026)</small></span></div></li>
+        <li><span class="num">5 · Jogo responsável</span><h3>Ferramentas de proteção só existem no regulado</h3><p>A entidade cita a autoexclusão centralizada, limites de gasto e fiscalização de influenciadores como mecanismos que deixam de existir com a proibição.</p><div class="dado"><b>+1 mi</b><span>pessoas inscritas na autoexclusão centralizada até julho de 2026<small>Dado atribuído à Agência Brasil</small></span></div></li>
+        <li><span class="num">6 · Integridade e lavagem</span><h3>Rastreio de manipulação e de dinheiro suspeito</h3><p>Segundo o IBJR, operadoras autorizadas são monitoradas por redes internacionais contra manipulação de resultados, e bancos comunicam transações suspeitas ao governo.</p><div class="dado"><b>4</b><span>redes internacionais de monitoramento de integridade esportiva com acordo com o governo desde outubro de 2024<small>Dado atribuído à Agência Gov</small></span></div></li>
+      </ol>
+      <p class="nota">O governo, por sua vez, calcula o custo social das apostas eletrônicas em <b>R$ 38,8 bilhões por ano</b>. <a href="#resumo" data-ir="resumo" style="color:var(--vermelho);font-weight:600;text-decoration:none">Ver os argumentos do governo →</a></p>
+    </div>
+    <div class="seguinte"><span>Próxima aba</span><a href="#historico" data-ir="historico">Histórico da regulamentação →</a></div>
+  </section>
+
+  <!-- ===================== HISTÓRICO ===================== -->
+  <section class="painel" id="p-historico" role="tabpanel" hidden>
+    <p class="frase">Em oito anos, o Brasil passou de um mercado <b>sem regras</b> para um mercado <b>regulado</b> e, depois de menos de dois anos de regulação, para a <b>proibição total</b>.</p>
+    <div class="data-linha"><span class="data">De 1941 a 2026</span><span>Principais leis, portarias e decisões</span></div>
+
+    <div class="secao">
+      <ol class="hist">
+        <li><span class="era">Antes das bets</span></li>
+        <li><div class="ano">1941</div><span class="pt"></span><div class="tx"><b>Jogo de azar vira contravenção</b>A Lei das Contravenções Penais pune a exploração de jogos de azar, regra que ainda serve de base para a proibição de cassinos e do jogo do bicho.<br><span class="lei">Decreto-Lei 3.688/1941</span></div></li>
+        <li><div class="ano">1946</div><span class="pt"></span><div class="tx"><b>Cassinos fechados</b>O presidente Eurico Gaspar Dutra proíbe os cassinos em todo o país.<br><span class="lei">Decreto-Lei 9.215/1946</span></div></li>
+
+        <li><span class="era">Liberação sem regulação</span></li>
+        <li class="marco"><div class="ano">2018<small>dezembro</small></div><span class="pt"></span><div class="tx"><b>Nasce a aposta de quota fixa</b>Lei sancionada no governo Michel Temer cria a modalidade lotérica em que o apostador sabe, na hora da aposta, quanto pode ganhar. O Ministério da Fazenda tinha até 4 anos para regulamentar, o que não aconteceu. Sem regras, os sites operaram por anos sem autorização nem fiscalização do governo brasileiro.<br><span class="lei">Lei 13.756/2018</span></div></li>
+                <li><span class="era">Regulação</span></li>
+        <li><div class="ano">2023<small>julho</small></div><span class="pt"></span><div class="tx"><b>Primeira MP das apostas</b>Governo Lula edita medida provisória para tributar e regular o setor. Depois, o tema passa a tramitar como projeto de lei.<br><span class="lei">MP 1.182/2023</span></div></li>
+        <li class="marco"><div class="ano">2023<small>dezembro</small></div><span class="pt"></span><div class="tx"><b>Lei das Bets</b>Sancionada no fim do ano, define as regras do mercado, inclui os jogos on-line (os cassinos virtuais), exige empresa com sede no Brasil e fixa tributação de 12% sobre a receita bruta dos jogos (GGR).<br><span class="lei">Lei 14.790/2023</span></div></li>
+        <li><div class="ano">2024</div><span class="pt"></span><div class="tx"><b>Secretaria de Prêmios e Apostas</b>O Ministério da Fazenda cria a SPA e publica as portarias que regulamentam o setor: requisitos técnicos, meios de pagamento, publicidade, jogo responsável e prazo para as empresas pedirem autorização.<br><span class="lei">Portarias SPA/MF</span></div></li>
+        <li><div class="ano">2024<small>out. e nov.</small></div><span class="pt"></span><div class="tx"><b>Primeiros freios</b>Em outubro, a Fazenda suspende as bets que não pediram autorização. Em novembro, o ministro Luiz Fux, do STF, proíbe a publicidade de apostas para crianças e adolescentes e determina medidas contra o uso de recursos do Bolsa Família em apostas; o plenário confirma a decisão por unanimidade. No Senado, funciona a CPI das Bets.<br><span class="lei">ADIs 7721 e 7723</span></div></li>
+        <li class="marco"><div class="ano">2025<small>1º de janeiro</small></div><span class="pt"></span><div class="tx"><b>Começa o mercado regulado</b>Só empresas autorizadas pela Fazenda podem operar, exclusivamente com domínio “.bet.br”. Cada autorização vale por cinco anos, custa R$ 30 milhões e permite até três marcas. Em dezembro de 2024, 71 das 114 empresas que pediram autorização tinham sido liberadas para pagar a outorga.</div></li>
+        <li><div class="ano">2025<small>junho</small></div><span class="pt"></span><div class="tx"><b>CPI termina sem relatório</b>O relatório final da CPI das Bets, que apontava crimes e endividamento de famílias, é rejeitado pelos senadores, e a comissão encerra os trabalhos sem aprovar propostas.</div></li>
+        <li><div class="ano">2025<small>out.</small></div><span class="pt"></span><div class="tx"><b>Imposto maior fica pelo caminho</b>A MP que compensava o recuo do IOF previa elevar de 12% para 18% a tributação das bets. O aumento foi retirado na comissão mista, e a MP perdeu a validade após ser retirada de pauta pela Câmara.<br><span class="lei">MP 1.303/2025</span></div></li>
+
+        <li><span class="era">Proibição</span></li>
+        <li class="marco"><div class="ano">2026<small>25 de setembro</small></div><span class="pt"></span><div class="tx"><b>MP proíbe as bets</b>Governo proíbe as apostas de quota fixa em todo o país, envia ao Congresso projeto que cria cinco crimes e lança o Desenrola Brasil 3.0. Havia 85 outorgas concedidas.<br><span class="lei">MP 1.394/2026</span></div></li>
+        <li><div class="ano">2026<small>outubro</small></div><span class="pt"></span><div class="tx"><b>Sites fora do ar</b>Em 6 de outubro, sites e aplicativos são bloqueados. Até o dia 14, os bancos devolvem saldos de cerca de 26,5 milhões de apostadores. As autorizações acabam em 25 de outubro.</div></li>
+        <li style="padding-bottom:0"><div class="ano" style="color:var(--fraco)">2026<small>novembro</small></div><span class="pt" style="border-color:var(--antigo)"></span><div class="tx"><b>Decisão do Congresso</b>Prazo inicial para votar a MP termina em 23 de novembro, prorrogável por mais 60 dias.</div></li>
+      </ol>
+      <div class="prox"><a href="#resumo" data-ir="resumo">Ver o resumo da MP →</a><a href="#cenario" data-ir="cenario">Ver o cenário atual →</a></div>
+    </div>
+  </section>
+
+  <p class="fonte"><span>Fontes: Ministério da Justiça e Segurança Pública (<a href="https://www.gov.br/mj/pt-br/assuntos/noticias-1/governo-federal-proibe-bets-em-todo-o-pais-e-lanca-pacote-de-protecao-as-familias-endividadas-1" target="_blank" rel="noopener">anúncio da MP</a>, 25/9/2026, e <a href="https://www.gov.br/mj/pt-br/assuntos/noticias-1/bets-fora-do-ar-plataformas-cumprem-determinacao-e-encerram-apostas-no-brasil" target="_blank" rel="noopener">balanço do bloqueio</a>, 6/10/2026); Ministério da Fazenda / Secretaria de Prêmios e Apostas; <a href="https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/175871" target="_blank" rel="noopener">Congresso Nacional (MPV 1.394/2026)</a>; Agência Senado; Agência Câmara; Supremo Tribunal Federal; Agência Brasil (EBC); Lei 13.756/2018 e Lei 14.790/2023. Posição do setor: Instituto Brasileiro de Jogo Responsável (IBJR), campanha “<a href="https://www.apostoquevocenaosabia.com/" target="_blank" rel="noopener">Aposto que você não sabia</a>”. Situação da tramitação atualizada em 22 de outubro de 2026.</span></p>
+</div>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id);};
+
+  /* ====================== abas, link e iframe ====================== */
+  var ABAS=['resumo','cenario','setor','historico'],aba='resumo';
+  function abre(k,rolar){if(ABAS.indexOf(k)<0)k='resumo';aba=k;
+    [].forEach.call($('abas').children,function(b){b.setAttribute('aria-selected',b.dataset.aba===k);});
+    ABAS.forEach(function(a){$('p-'+a).hidden=a!==k;});
+    try{history.replaceState(null,'','#'+k);}catch(e){}
+    if(rolar){var y=document.querySelector('.nav').getBoundingClientRect().top+scrollY;
+      if(window.parent!==window)parent.postMessage({type:'mp-bets:rolar',y:y},'*');else if(scrollY>y)scrollTo({top:y,behavior:'smooth'});}}
+  function fade(){var t=$('abas');t.parentNode.classList.toggle('mais',t.scrollLeft+t.clientWidth<t.scrollWidth-4);}
+  $('abas').addEventListener('scroll',fade);addEventListener('resize',fade);setTimeout(fade,300);
+  $('abas').addEventListener('click',function(e){var b=e.target.closest('button');if(b)abre(b.dataset.aba,true);});
+  $('abas').addEventListener('keydown',function(e){var i=ABAS.indexOf(aba);if(e.key==='ArrowRight'||e.key==='ArrowLeft'){i=(i+(e.key==='ArrowRight'?1:ABAS.length-1))%ABAS.length;abre(ABAS[i],false);$('abas').children[i].focus();}});
+  document.addEventListener('click',function(e){var a=e.target.closest('[data-ir]');if(!a)return;e.preventDefault();abre(a.dataset.ir,true);});
+  function daHash(){return location.hash.replace('#','').replace(/^aba=/,'').split('&')[0];}
+  var paginaPai=null;
+  $('copiar').addEventListener('click',function(){var base=(paginaPai||location.href).split('#')[0],url=paginaPai?base:base+'#'+aba,sp=this.querySelector('span');
+    var ok=function(){sp.textContent='Link copiado';setTimeout(function(){sp.textContent='Copiar link';},1800);};
+    if(navigator.clipboard)navigator.clipboard.writeText(url).then(ok,function(){sp.textContent=url;});else sp.textContent=url;});
+  $('maisProibe').addEventListener('click',function(){$('proibe').classList.add('aberta');this.setAttribute('aria-expanded','true');this.style.setProperty('display','none','important');});
+  if(innerWidth<760)[].forEach.call(document.querySelectorAll('.dobra'),function(d){d.open=false;});
+  abre(daHash(),false);
+  addEventListener('hashchange',function(){if(daHash()!==aba)abre(daHash(),false);});
+
+  /* altura automática no iframe (mesmo protocolo das páginas anteriores, com prefixo próprio) */
+  if(window.parent!==window){var last=0;function send(){var h=Math.ceil(document.documentElement.getBoundingClientRect().height);
+    if(h!==last){last=h;parent.postMessage({type:'mp-bets:altura',altura:h},'*');}}
+    addEventListener('message',function(e){if(e.data&&e.data.type==='mp-bets:pagina')paginaPai=e.data.url;});
+    parent.postMessage({type:'mp-bets:pronto'},'*');
+    new ResizeObserver(send).observe(document.documentElement);addEventListener('load',send);setInterval(send,1000);}
+})();
+</script>
+</body>
+</html>
