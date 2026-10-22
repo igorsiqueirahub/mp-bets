@@ -35,6 +35,12 @@ h1 span{color:var(--vermelho);display:block}
 .nav.mais:after{opacity:1}
 .abas{display:flex;overflow-x:auto;scrollbar-width:none;gap:4px;min-width:0}
 .abas::-webkit-scrollbar{display:none}
+/* com mouse, se as abas não couberem, mostra uma barra fina para rolar na horizontal */
+@media (hover:hover) and (pointer:fine){
+  .abas{scrollbar-width:thin;scrollbar-color:#BDBDBD transparent}
+  .abas::-webkit-scrollbar{display:block;height:4px}
+  .abas::-webkit-scrollbar-thumb{background:#BDBDBD;border-radius:2px}
+}
 .abas button{all:unset;cursor:pointer;white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--mudo);padding:16px 11px 14px;border-bottom:3px solid transparent;display:inline-flex;align-items:center;gap:6px}
 .abas button[aria-selected=true]{color:var(--tinta);border-bottom-color:var(--vermelho)}
 .abas button:focus-visible,.btn-link:focus-visible,.pl a:focus-visible,.prox a:focus-visible{outline:2px solid var(--vermelho);outline-offset:2px}
@@ -248,7 +254,7 @@ html.em-iframe .fonte{margin-top:28px}
       <button type="button" role="tab" data-aba="resumo" aria-selected="true">Resumo da MP</button>
       <button type="button" role="tab" data-aba="cenario" aria-selected="false">Cenário atual <span class="tag">em vigor</span></button>
       <button type="button" role="tab" data-aba="setor" aria-selected="false">O que diz o setor</button>
-      <button type="button" role="tab" data-aba="historico" aria-selected="false">Histórico da regulamentação</button>
+      <button type="button" role="tab" data-aba="historico" aria-selected="false">Histórico</button>
     </div>
   </nav>
 
