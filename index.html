@@ -162,8 +162,7 @@ html.em-iframe .fonte{margin-top:28px}
   .tiles,.tiles.c3{grid-template-columns:1fr}
   /* cabeçalho enxuto: abas mais perto do topo */
   .lede{font-size:18px;line-height:28px}
-  .metas{border:0;padding:0;margin-bottom:12px}
-  .metas .chip{display:none}
+  .metas{display:none}
   .placar{grid-template-columns:repeat(2,minmax(0,1fr))!important}
   .pl{padding:14px 14px 12px;gap:6px}
   .pl .n{font-size:24px}
@@ -236,7 +235,6 @@ html.em-iframe .fonte{margin-top:28px}
     <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>MP 1.394/2026 · 25 de setembro de 2026</span>
     <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21h16M6 21V10M10 21V10M14 21V10M18 21V10M3 10l9-6 9 6"/></svg>Em análise no Congresso</span>
     <span class="chip voto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/></svg>Em vigor desde a publicação</span>
-    <button type="button" class="btn-link" id="copiar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4L11.8 5.8"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.4-1.4"/></svg><span>Copiar link</span></button>
   </div>
   <div class="placar" role="group" aria-label="Números-chave">
     <div class="pl"><div class="n">6/out</div><div class="t">sites e aplicativos de apostas saíram do ar em todo o país, com apoio da Anatel, do CGI.br e das lojas de aplicativos</div><a href="#resumo" data-ir="resumo">Ver o que diz a MP →</a></div>
@@ -470,10 +468,6 @@ html.em-iframe .fonte{margin-top:28px}
   $('abas').addEventListener('keydown',function(e){var i=ABAS.indexOf(aba);if(e.key==='ArrowRight'||e.key==='ArrowLeft'){i=(i+(e.key==='ArrowRight'?1:ABAS.length-1))%ABAS.length;abre(ABAS[i],false);$('abas').children[i].focus();}});
   document.addEventListener('click',function(e){var a=e.target.closest('[data-ir]');if(!a)return;e.preventDefault();abre(a.dataset.ir,true);});
   function daHash(){return location.hash.replace('#','').replace(/^aba=/,'').split('&')[0];}
-  var paginaPai=null;
-  $('copiar').addEventListener('click',function(){var base=(paginaPai||location.href).split('#')[0],url=paginaPai?base:base+'#'+aba,sp=this.querySelector('span');
-    var ok=function(){sp.textContent='Link copiado';setTimeout(function(){sp.textContent='Copiar link';},1800);};
-    if(navigator.clipboard)navigator.clipboard.writeText(url).then(ok,function(){sp.textContent=url;});else sp.textContent=url;});
   $('maisProibe').addEventListener('click',function(){$('proibe').classList.add('aberta');this.setAttribute('aria-expanded','true');this.style.setProperty('display','none','important');});
   if(innerWidth<760)[].forEach.call(document.querySelectorAll('.dobra'),function(d){d.open=false;});
   abre(daHash(),false);
@@ -482,7 +476,6 @@ html.em-iframe .fonte{margin-top:28px}
   /* altura automática no iframe (mesmo protocolo das páginas anteriores, com prefixo próprio) */
   if(window.parent!==window){var last=0;function send(){var h=Math.ceil(document.documentElement.getBoundingClientRect().height);
     if(h!==last){last=h;parent.postMessage({type:'mp-bets:altura',altura:h},'*');}}
-    addEventListener('message',function(e){if(e.data&&e.data.type==='mp-bets:pagina')paginaPai=e.data.url;});
     parent.postMessage({type:'mp-bets:pronto'},'*');
     new ResizeObserver(send).observe(document.documentElement);addEventListener('load',send);setInterval(send,1000);}
 })();
