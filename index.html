@@ -227,6 +227,16 @@ html.em-iframe .fonte{margin-top:28px}
   .hist .ano{font-size:17px}
   .hist .pt{margin-left:6px}
 }
+@media (max-width:639px){
+  /* abas em grade 2x2: todas visíveis, sem rolagem lateral */
+  .nav:after{display:none}
+  .abas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;overflow:visible}
+  .abas button{justify-content:center;text-align:center;white-space:normal;flex-wrap:wrap;gap:4px;padding:13px 6px 11px;font-size:12px;line-height:1.25;min-height:46px;box-sizing:border-box}
+  .abas button:nth-child(-n+2){box-shadow:inset 0 -1px 0 var(--linha)}
+  .abas button:nth-child(odd){box-shadow:inset -1px 0 0 var(--linha)}
+  .abas button:nth-child(1){box-shadow:inset -1px -1px 0 var(--linha)}
+  .abas .tag{font-size:9px;padding:2px 4px}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <script>if(window.parent!==window)document.documentElement.classList.add('em-iframe');</script>
