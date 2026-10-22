@@ -1,17 +1,6 @@
 <!-- MP das Bets: embed para a matéria (fios acima e abaixo, 8px de espaço depois do texto) -->
+<!-- Altura fixa com barra de rolagem própria: 900px no desktop, até 85% da altura da tela no celular -->
 <div class="mp-bets-embed" style="margin:8px 0;border-top:1px solid #E6E6E6;border-bottom:1px solid #E6E6E6">
-  <iframe id="mp-bets" src="https://igorsiqueirahub.github.io/mp-bets/" title="MP das Bets: o fim das apostas online no Brasil" loading="lazy" scrolling="no"
-    style="display:block;width:100%;min-height:900px;border:0"></iframe>
+  <iframe src="https://igorsiqueirahub.github.io/mp-bets/" title="MP das Bets: o fim das apostas online no Brasil" loading="lazy"
+    width="100%" height="900" style="display:block;width:100%;height:900px;max-height:85vh;border:0"></iframe>
 </div>
-<script>
-(function(){
-  var f=document.getElementById('mp-bets');
-  addEventListener('message',function(e){
-    if(e.source!==f.contentWindow||!e.data)return;
-    var d=e.data;
-    if(d.type==='mp-bets:pronto')f.contentWindow.postMessage({type:'mp-bets:pagina',url:location.href.split('#')[0]},'*');
-    if(d.type==='mp-bets:altura')f.style.height=d.altura+'px';
-    if(d.type==='mp-bets:rolar'){var y=f.getBoundingClientRect().top+scrollY+d.y;if(scrollY>y)scrollTo({top:y,behavior:'smooth'});}
-  });
-})();
-</script>

@@ -467,7 +467,7 @@ html.em-iframe .fonte{margin-top:28px}
     ABAS.forEach(function(a){$('p-'+a).hidden=a!==k;});
     try{history.replaceState(null,'','#'+k);}catch(e){}
     if(rolar){var y=document.querySelector('.nav').getBoundingClientRect().top+scrollY;
-      if(window.parent!==window)parent.postMessage({type:'mp-bets:rolar',y:y},'*');else if(scrollY>y)scrollTo({top:y,behavior:'smooth'});}}
+      if(scrollY>y)scrollTo({top:y,behavior:'smooth'});}}
   function fade(){var t=$('abas');t.parentNode.classList.toggle('mais',t.scrollLeft+t.clientWidth<t.scrollWidth-4);}
   $('abas').addEventListener('scroll',fade);addEventListener('resize',fade);setTimeout(fade,300);
   $('abas').addEventListener('click',function(e){var b=e.target.closest('button');if(b)abre(b.dataset.aba,true);});
@@ -479,11 +479,6 @@ html.em-iframe .fonte{margin-top:28px}
   abre(daHash(),false);
   addEventListener('hashchange',function(){if(daHash()!==aba)abre(daHash(),false);});
 
-  /* altura automática no iframe (mesmo protocolo das páginas anteriores, com prefixo próprio) */
-  if(window.parent!==window){var last=0;function send(){var h=Math.ceil(document.documentElement.getBoundingClientRect().height);
-    if(h!==last){last=h;parent.postMessage({type:'mp-bets:altura',altura:h},'*');}}
-    parent.postMessage({type:'mp-bets:pronto'},'*');
-    new ResizeObserver(send).observe(document.documentElement);addEventListener('load',send);setInterval(send,1000);}
 })();
 </script>
 </body>
